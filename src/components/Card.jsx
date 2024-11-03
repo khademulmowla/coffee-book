@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Card = ({ coffee }) => {
+    const { pathname } = useLocation()
+
     const { name, image, category, origin, type, id, rating, popularity } = coffee || {}
     return (
         <div className="flex relative" >
@@ -20,6 +23,9 @@ const Card = ({ coffee }) => {
                     <p>Popular: {popularity}</p>
                 </div>
             </Link>
+            {
+                pathname === '/dashboard' && <div className="absolute p-3 bg-warning rounded-full cursor-pointer -top-5 -right-5"><FaTrashAlt size={20} /></div>
+            }
         </div>
     );
 };
